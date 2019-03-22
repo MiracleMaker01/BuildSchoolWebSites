@@ -1,0 +1,590 @@
+@import "normalize";
+
+$main-color: #ff9204;
+
+/* 基底頁面設定 */
+html {
+    font-size: 16px;
+    font-family: sans-serif;
+    line-height: 1.4;
+    color: #555;
+}
+
+a {
+    color: #009ced;
+    text-decoration: none;
+}
+
+a:havor {
+    color: #c30010;
+    text-decoration: underline;
+}
+
+.container {
+    width: 1080px;
+    margin: 0 auto;
+}
+
+/* 頂部選單 */
+.top-menu {
+    background-color: $main-color;
+    height: 36px;
+
+    ul {
+        margin: 0;         /* 去除margin值 */
+        padding: 0;
+        list-style: none;   /* 去除原本前面的list的點點 */
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    a {
+        display: block;
+        width: 90px;
+        height: 36px;
+        line-height: 36px;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    a:hover {
+        background-color:#ff6204;
+        /*background-color: mix(#009ced,#555,30);*/
+    }
+
+    i {
+        margin-right: 5px;
+    }
+}
+
+/* 頂部區塊 */
+.top-block{
+    height: 80px;
+    background-color: #fff;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 9px 0;
+    }
+}
+
+
+h1.logo {
+    margin: 0;
+
+    img {
+        display: block;
+        width: 250px;
+        height: 62px;
+    }
+
+    a {
+        display: block;
+      }
+}
+
+.search {
+    input {
+        /*width: 285px; (被覆蓋)*/ 
+        width: 250px;
+        height: 28px;
+        margin: 2px, #ddd;
+        border-radius: 17px;
+        padding-left: 35px;
+    }
+
+    i {
+        position: relative;
+        left: 32px;
+    }
+
+    input:focus {    /* 只有在input的focus才要修正 */
+        outline: none;       /* 點選時藍色的指示框 */
+        border-color: #009ced;
+        box-shadow: #009ced 0 0 2px;
+    }
+}
+
+/* 從這裡開始製作 主選單 */
+.main-menu {
+    height: 38px;
+    border-top: #ddd 1px solid;
+    border-bottom: #ddd 1px solid;
+
+    ul{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        /* justify-content: space-between; */ 
+    }
+
+    li {
+        flex: 0 0 20%;
+    }
+
+    a {
+        display: block;
+        height: 38px;
+        line-height: 38px;
+        color: #3d4143;
+        text-align: center;
+        text-decoration: none;
+    }
+
+
+    a:hover {
+        background-color: $main-color;
+        color: #fff;
+        transition-property: background;
+        transition-duration: 3s;
+    }
+}
+
+.index-image {
+    height: 400px;
+    background: url(../images/index-image.jpg) center center no-repeat;
+    background-size: cover;
+    position: relative;
+
+
+    h2 {
+        font-size: 50px;
+        color: rgba(255,255,255,0.8);
+        position: absolute;
+        margin: 0 0 0 150px;
+        left: 50%;
+        bottom: 80px;
+    }
+
+    h2 span {
+        display: block;
+        position: relative;
+        left: 2em;
+    }
+}
+
+/* 新品資訊 */
+.new-items {
+    padding: 40px 0;
+
+    ul{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    li {
+        flex: 0 0 340px;
+    }
+}
+
+/*貓奴選物區塊*/
+.featured-item {
+    background-color: #eee;
+    padding: 40px 0; 
+
+    h2 {
+        color: $main-color;
+        font-size: 2rem;
+        text-align: center;
+        margin: 0 0 30px;
+    }
+
+    h3 {
+        margin-top: 0;
+        font-size: 1.5rem;
+    }
+
+    .user {
+        float: right;
+        margin-top: 30px;    /*也可以使用padding完成*/
+    }
+
+    .user img {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+        border-radius: 40px;  /* border-radius: 50% (寬高必須相同，不然會變成橢圓)*/
+        margin-left: 10px;
+        vertical-align: middle;
+    }
+}
+
+.item-content {
+    display: flex;      /* 設為flexbox 容器*/
+}
+
+.item-img {
+    flex: 0 0 360px;    /* 延展、縮窄(看flexbox講義) */  /*看到間距要想到margin*/
+    margin-right: 30px;
+}
+
+.item-text {
+    flex: 1;
+}
+
+/* 三隻貓的媽媽 */
+
+/* 我們的堅持，頁面快訊 */
+/* 用section包 */
+.news-and-principle {
+    padding: 40px 0;
+
+    .container{    /* 調整區塊 => 先選指定的容器 */
+        display: flex;                 /* 運用"浮動"調整排序方向 */
+    }
+}
+
+.news {
+    flex: 0 0 750px ;    
+    min-width: 0;   /* flex會與內容同寬，所以要用min-width做調整 */
+
+@mixin r_t_w_i ($url, $width, $height)
+{
+    width: $width;
+    height: $height;
+    background: url($url) no-repeat;
+    background-size: 100% 100%;
+    text-indent: 110%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+    h2 {
+        margin: 0 0 20px;
+        @include r_t_w_i("../images/news-title@2x.png", 120px, 36px);
+        // width: 120px;
+        // height: 36px;
+        // margin: 0 0 20px;
+        // background: url(../images/news-title@2x.png) no-repeat;
+        // background-size: 100% 100%;
+        // text-indent: 110%;
+        // overflow: hidden;
+        // white-space: nowrap;   /* 空白不換行 */
+    }
+
+    ul {            /* 清除預設樣式 */
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    li {
+        padding: 8px;
+        border-bottom: #ddd 1px dotted;   /* 看講義"邊框" */
+    }
+
+    a {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;        /* 將超出範圍的內容隱藏起來*/
+        text-overflow: ellipsis;   /* 將超出範圍的文字改為... */
+    }
+
+    li:nth-child(even){
+        background: #f5f5f5;
+    }
+    
+}
+
+.principle {
+    flex: 0 0 280px;
+    margin-left: auto;  /*justity-content也可以 ， 自動推移到底*/
+    display: flex;      /* 要變成容器才能調整排序 */
+    flex-direction: column-reverse;
+    color: #fff;
+
+    h2 {
+        
+        height: 60px;             /* 不包含padding值 */
+        margin: 0;
+        padding: 20px;
+        background-color: #5f5547;
+        position: relative;
+        
+        &::before{
+            content:"";
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: #fff url("../images/cat-head-animate@2x.png") no-repeat;
+            background-size: 60px 300px;
+            border-radius: 50%;
+            vertical-align: middle;
+
+            position: relative;
+            animation-name: moving-box;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: steps(4);
+            @keyframes moving-box {
+                0% {
+                    background-position: 0 0;
+                }
+                50% {
+                    background-position: 0 -240px;
+                }
+                100% {
+                    background-position: 0 0px;
+                }
+            }
+        }
+        &::after{
+            content: "";
+            display: block;
+            position: absolute;
+            border: transparent 8px solid;
+            border-top: $main-color 8px solid;
+            top: 0;
+            left: 45px;
+        }
+    }
+
+    h2 img {
+        display: none;
+        width: 60px;
+        height: 60px;
+        background-color:#fff;
+        border-radius: 30px;  /* border-radius: 50% (寬高必須相同，不然會變成橢圓)*/
+        margin-left: 5px;
+        vertical-align: middle;
+    }
+}
+
+/* 因為非HTML內容所以改成圖片 */
+
+.principle-content {
+    flex-grow: 1;       /* 讓內文尺寸有彈性(根據軸向做調整) */
+    background-color: $main-color;
+    padding: 10px;
+
+    li{
+        margin: 10px 0;
+        font-size: 18px;
+    }
+}
+
+/* 頁尾 */
+.page-footer {
+    padding: 40px 0;
+    background-color: #3d4143;
+    color: #fff;
+    text-align: center;
+
+    .page-footer ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    li {
+        flex: 0 0 340px;
+    }
+
+    .bussiness-hours {     /* 要注意權重bussiness-hours < page-footer，所以要將page-footer家在前面加重權重 */
+        flex: 0 0 100%;
+    }
+}
+
+@media screen and (max-width: "1140px") {
+    //如果頁面寬度小於1140，將會執行以下內容  注意 : media qurey 沒有權重 .container跟上面的一樣 所以要寫在最下面，否則會被覆蓋
+    .container {
+      //container 寬度 縮小到 820
+      width: 820px;
+    }
+  
+    .index-image h2 {
+      //這裡修正圖片內文字的位置
+      left: auto;
+      margin: 0;
+      right: 2em; //這裡是因為 spen 有將文字右推 所以我們要在這裡將他推回 container
+    }
+  
+    .new-items li {
+      flex: 0 0 260px;
+    }
+  
+    .page-footer li {
+      flex: 0 0 260px;
+    }
+  }
+  
+  @media screen and (max-width: "880px") {
+    .container {
+      width: 740px;
+    }
+  
+    .new-items {
+      ul {
+        flex-direction: column; //改變排列方式 垂直
+      }
+      //因為要讓內文垂直排列 所以我們自己在加一個容器
+  
+      li {
+        display: flex;
+        flex-basis: auto;
+        margin-bottom: 20px;
+      }
+  
+      li:last-child {
+        margin-bottom: 0;
+      }
+      li > a {
+        flex: 0 0 200px;
+        margin-right: 20px;
+      }
+  
+      li > div {
+        //因為我們不能保證內文的長度 足夠 所以我們需要讓他自動延展 保持一樣的寬度
+        flex: 1;
+      }
+      li h2 {
+        margin-top: 0;
+      }
+    }
+  
+    .new-and-principle .container {
+      flex-direction: column; //改變排列方式 垂直
+    }
+  
+    .news {
+      margin-bottom: 40px;
+    }
+  
+    .principle {
+      margin-left: 0;
+      flex-direction: column;
+      flex-basis: auto;
+      h2 {
+        background: transparent;
+        color: rgb(37, 37, 37);
+        padding: 0;
+      }
+      h2::before {
+        border: $main-color 5px solid;
+      }
+      h2::after {
+        display: none;
+      }
+  
+      ol {
+        list-style: none;
+      }
+      ol li {
+        position: relative; //這裡是為了讓下面ol li::before可以使用 絕對定位 所以給他一個相對位置
+      }
+  
+      ol li::before {
+        //作圓形
+        width: 20px;
+        height: 20px;
+        display: block;
+        border-radius: 50%;
+        background: #ddd;
+        color: $main-color;
+        text-align: center;
+        line-height: 20px;
+        position: absolute; //這裡因為需要將 編號 和內文分開 所以我們讓他超脫世俗
+        top: 2px;
+        left: -25px;
+      }
+  
+      ol li:nth-child(1)::before {
+        content: "1";
+      }
+      ol li:nth-child(2)::before {
+        content: "2";
+      }
+      ol li:nth-child(3)::before {
+        content: "3";
+      }
+    }
+  
+    .page-footer {
+      li {
+        flex: 0 0 100%;
+        // flex: auto;
+      }
+  
+      ul {
+        flex-direction: column; //改變排列方式 垂直
+      }
+    }
+  }
+  
+  @media screen and (max-width: "767px") {
+    //通常 iphon 的寬度大概就是這樣 所以我們可以用 767~768 觀察
+    .container {
+      width: 90%;
+    }
+  
+    .item-content {
+      flex-direction: column;
+      // text-align: center;
+      .item-img {
+        flex-basis: 100%;
+        margin: 0;
+  
+        img {
+          display: block; //先變成區塊 才能使用 margin 置中
+          margin: 0 auto; //置中
+        }
+      }
+    }
+    .featured-item h3 {
+      text-align: center;
+    }
+  }
+  
+  @media screen and (max-width: "640px") {
+    .top-block{
+      height: auto;
+    }
+    
+    .top-block .container{
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    h1.logo{
+      margin-bottom: 10px;
+    }
+  
+    .main-menu {
+      position: relative;
+      .container{
+        width: 100%;
+      }
+      button {
+        display: block;
+        background: #fff;
+        border: none;
+        width: 100%;
+        height: 40px;
+  
+        i{
+          margin-left: 5px;
+        }
+      }
+  
+      ul {
+        flex-direction: column;
+        position: absolute;
+        top: 40px;
+        width: 100%;
+        background: rgba(#fff, 0.9);
+        z-index: 5;   //這裡數字越大離使用者越近
+  
+      }
+    }
+  }
+  
